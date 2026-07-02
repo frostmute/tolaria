@@ -15,6 +15,7 @@ pub enum AiModelProviderKind {
     LmStudio,
     OpenRouter,
     Gemini,
+    Hermes,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]

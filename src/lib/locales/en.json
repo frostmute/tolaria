@@ -273,6 +273,7 @@
   "settings.aiProviders.kind": "Provider",
   "settings.aiProviders.kind.ollama": "Ollama",
   "settings.aiProviders.kind.lmStudio": "LM Studio",
+  "settings.aiProviders.kind.hermes": "Hermes",
   "settings.aiProviders.kind.openAi": "OpenAI",
   "settings.aiProviders.kind.anthropic": "Anthropic",
   "settings.aiProviders.kind.gemini": "Gemini",

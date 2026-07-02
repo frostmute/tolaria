@@ -138,6 +138,7 @@ describe('SettingsPanel', () => {
       pi: { status: 'missing', version: null },
       gemini: { status: 'missing', version: null },
       kiro: { status: 'missing', version: null },
+      hermes: { status: 'missing', version: null },
     }
     render(
       <SettingsPanel

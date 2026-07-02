@@ -12,6 +12,7 @@ const missingStatuses: AiAgentStatuses = {
   pi: { status: 'missing', version: null },
   gemini: { status: 'missing', version: null },
   kiro: { status: 'missing', version: null },
+  hermes: { status: 'missing', version: null },
 }
 const missingAgentInstallTestIds = [
   'ai-agents-onboarding-install-codex',
@@ -19,6 +20,7 @@ const missingAgentInstallTestIds = [
   'ai-agents-onboarding-install-pi',
   'ai-agents-onboarding-install-gemini',
   'ai-agents-onboarding-install-kiro',
+  'ai-agents-onboarding-install-hermes',
 ] as const
 const installLinkTargets = [
   ['ai-agents-onboarding-install-claude_code', 'https://docs.anthropic.com/en/docs/claude-code'],
@@ -27,6 +29,7 @@ const installLinkTargets = [
   ['ai-agents-onboarding-install-pi', 'https://pi.dev'],
   ['ai-agents-onboarding-install-gemini', 'https://google-gemini.github.io/gemini-cli/'],
   ['ai-agents-onboarding-install-kiro', 'https://kiro.dev/docs/cli'],
+  ['ai-agents-onboarding-install-hermes', 'https://hermes.sh/docs/install'],
 ] as const
 
 vi.mock('../utils/url', () => ({

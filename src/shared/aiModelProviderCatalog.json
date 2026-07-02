@@ -22,6 +22,17 @@
     "local": true
   },
   {
+    "kind": "hermes",
+    "name": "Hermes",
+    "label_key": "settings.aiProviders.kind.hermes",
+    "base_url": "http://127.0.0.1:8645/v1",
+    "runtime_base_url": "http://127.0.0.1:8645/v1",
+    "default_model_id": "hermes-3-llama-3.1-405b",
+    "api_key_storage": "none",
+    "api_key_env_var": null,
+    "local": true
+  },
+  {
     "kind": "open_ai",
     "name": "OpenAI",
     "label_key": "settings.aiProviders.kind.openAi",

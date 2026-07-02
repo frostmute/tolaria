@@ -17,6 +17,7 @@ const installedStatuses = {
   pi: { status: 'installed' as const, version: '0.70.2' },
   gemini: { status: 'installed' as const, version: '0.5.1' },
   kiro: { status: 'installed' as const, version: '0.12.0' },
+  hermes: { status: 'installed' as const, version: '0.16.0' },
 }
 
 const openAiProvider: AiModelProvider = {
@@ -125,6 +126,7 @@ describe('AiAgentsBadge', () => {
         pi: { status: 'missing', version: null },
         gemini: { status: 'missing', version: null },
         kiro: { status: 'missing', version: null },
+        hermes: { status: 'missing', version: null },
       },
     })
     openAiAgentsMenu()

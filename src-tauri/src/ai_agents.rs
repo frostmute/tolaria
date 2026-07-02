@@ -13,6 +13,7 @@ pub enum AiAgentId {
     Pi,
     Gemini,
     Kiro,
+    Hermes,
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Default)]
@@ -37,6 +38,7 @@ pub struct AiAgentsStatus {
     pub pi: AiAgentAvailability,
     pub gemini: AiAgentAvailability,
     pub kiro: AiAgentAvailability,
+    pub hermes: AiAgentAvailability,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -107,14 +109,16 @@ pub async fn get_ai_agents_status() -> AiAgentsStatus {
     let pi = tokio::task::spawn_blocking(crate::pi_cli::check_cli);
     let gemini = tokio::task::spawn_blocking(crate::gemini_cli::check_cli);
     let kiro = tokio::task::spawn_blocking(crate::kiro_cli::check_cli);
+    let hermes = tokio::task::spawn_blocking(crate::hermes_cli::check_cli);
 
-    let (claude, codex, opencode, pi, gemini, kiro) = tokio::join!(
+    let (claude, codex, opencode, pi, gemini, kiro, hermes) = tokio::join!(
         availability_or_missing(claude, AI_AGENT_STATUS_PROBE_TIMEOUT),
         availability_or_missing(codex, AI_AGENT_STATUS_PROBE_TIMEOUT),
         availability_or_missing(opencode, AI_AGENT_STATUS_PROBE_TIMEOUT),
         availability_or_missing(pi, AI_AGENT_STATUS_PROBE_TIMEOUT),
         availability_or_missing(gemini, AI_AGENT_STATUS_PROBE_TIMEOUT),
-        availability_or_missing(kiro, AI_AGENT_STATUS_PROBE_TIMEOUT)
+        availability_or_missing(kiro, AI_AGENT_STATUS_PROBE_TIMEOUT),
+        availability_or_missing(hermes, AI_AGENT_STATUS_PROBE_TIMEOUT)
     );
 
     AiAgentsStatus {
@@ -124,6 +128,7 @@ pub async fn get_ai_agents_status() -> AiAgentsStatus {
         pi,
         gemini,
         kiro,
+        hermes,
     }
 }
 
@@ -205,6 +210,16 @@ where
             crate::gemini_cli::run_agent_stream(mapped, emit)
         }
         AiAgentId::Kiro => run_kiro_agent_stream(request, permission_mode, emit),
+        AiAgentId::Hermes => {
+            let mapped = crate::cli_agent_runtime::AgentStreamRequest {
+                message: request.message,
+                system_prompt: request.system_prompt,
+                vault_path: request.vault_path,
+                vault_paths: request.vault_paths,
+                permission_mode,
+            };
+            crate::hermes_cli::run_agent_stream(mapped, emit)
+        }
     }
 }
 

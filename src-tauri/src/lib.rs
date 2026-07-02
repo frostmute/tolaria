@@ -12,6 +12,8 @@ pub mod frontmatter;
 pub mod gemini_cli;
 mod gemini_config;
 mod gemini_discovery;
+pub mod hermes_cli;
+mod hermes_discovery;
 pub mod git;
 pub mod kiro_cli;
 mod kiro_discovery;
