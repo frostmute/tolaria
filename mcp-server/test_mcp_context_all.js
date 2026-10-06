@@ -4,7 +4,7 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 async function run() {
   const transport = new StdioClientTransport({
     command: '/usr/local/bin/node',
-    args: ['/Users/thewytchhaus/Documents/GitHub/tolaria/mcp-server/index.js']
+    args: ['/Users/thewytchhaus/workspace/tolaria/mcp-server/index.js']
   });
   const client = new Client(
     { name: 'test-client', version: '1.0.0' },
